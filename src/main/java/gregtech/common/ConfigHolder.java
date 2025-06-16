@@ -46,8 +46,8 @@ public class ConfigHolder {
 
         @Config.Comment({ "Whether insufficient energy supply should reset Machine recipe progress to zero.",
                 "If true, progress will reset.", "If false, progress will decrease to zero with 2x speed",
-                "Default: false" })
-        public boolean recipeProgressLowEnergy = false;
+                "Default: true" })
+        public boolean recipeProgressLowEnergy = true;
 
         @Config.Comment({
                 "Whether to require a Wrench, Wirecutter, or other GregTech tools to break machines, casings, wires, and more.",
@@ -58,8 +58,8 @@ public class ConfigHolder {
         public boolean enableMaintenance = true;
 
         @Config.Comment({ "Whether to enable High-Tier Solar Panels (IV-UV). They will not have recipes.",
-                "Default: false" })
-        public boolean enableHighTierSolars = false;
+                "Default: true" })
+        public boolean enableHighTierSolars = true;
 
         @Config.Comment({
                 "Whether to enable World Accelerators, which accelerate ticks for surrounding Tile Entities, Crops, etc.",
@@ -152,9 +152,9 @@ public class ConfigHolder {
                 "Items and Machines enabled with this config will have missing recipes by default.",
                 "This is intended for modpack developers only, and is not playable without custom tweaks or addons.",
                 "Other mods can override this to true, regardless of the config file.",
-                "Default: false" })
+                "Default: true" })
         @Config.RequiresMcRestart
-        public boolean highTierContent = false;
+        public boolean highTierContent = true;
 
         @Config.Comment({ "Whether tick acceleration effects are allowed to affect GT machines.",
                 "This does NOT apply to the World Accelerator, but to external effects like Time in a Bottle.",
@@ -273,14 +273,14 @@ public class ConfigHolder {
         @Config.Comment({
                 "How many Multiblock Casings to make per craft. Must be greater than 0 and fit in a stack.",
                 "'Normal' values would be 1, 2, or 3.",
-                "Default: 2" })
+                "Default: 3" })
         @Config.RangeInt(min = 1, max = 64)
-        public int casingsPerCraft = 2;
+        public int casingsPerCraft = 3;
 
         @Config.Comment({
                 "Whether to nerf the output amounts of the first circuit in a set to 1 (from 2) and SoC to 2 (from 4).",
-                "Default: false" })
-        public boolean harderCircuitRecipes = false;
+                "Default: true" })
+        public boolean harderCircuitRecipes = true;
     }
 
     public static class CompatibilityOptions {
@@ -316,11 +316,11 @@ public class ConfigHolder {
         public static class EnergyCompatOptions {
 
             @Config.Comment({ "Enable Native GTEU to Forge Energy (RF and alike) on GT Cables and Wires.",
-                    "This does not enable nor disable Converters.", "Default: true" })
-            public boolean nativeEUToFE = true;
+                    "This does not enable nor disable Converters.", "Default: false" })
+            public boolean nativeEUToFE = false;
 
-            @Config.Comment({ "Enable GTEU to FE (and vice versa) Converters.", "Default: false" })
-            public boolean enableFEConverters = false;
+            @Config.Comment({ "Enable GTEU to FE (and vice versa) Converters.", "Default: true" })
+            public boolean enableFEConverters = true;
 
             @Config.Comment({ "Forge Energy to GTEU ratio for converting FE to EU.", "Only affects converters.",
                     "Default: 4 FE == 1 EU" })
@@ -670,40 +670,40 @@ public class ConfigHolder {
         public NanoSaber nanoSaber = new NanoSaber();
 
         @Config.RequiresMcRestart
-        @Config.Comment("NightVision Goggles Voltage Tier. Default: 1 (LV)")
-        @Config.RangeInt(min = 0, max = 14)
+        @Config.Comment("NightVision Goggles Voltage Tier. Default: 1 (QLV)")
+        @Config.RangeInt(min = 0, max = 28)
         public int voltageTierNightVision = 1;
 
         @Config.RequiresMcRestart
-        @Config.Comment("NanoSuit Voltage Tier. Default: 3 (HV)")
-        @Config.RangeInt(min = 0, max = 14)
-        public int voltageTierNanoSuit = 3;
+        @Config.Comment("NanoSuit Voltage Tier. Default: 7 (HV)")
+        @Config.RangeInt(min = 0, max = 28)
+        public int voltageTierNanoSuit = 7;
 
         @Config.RequiresMcRestart
-        @Config.Comment({ "Advanced NanoSuit Chestplate Voltage Tier.", "Default: 3 (HV)" })
-        @Config.RangeInt(min = 0, max = 14)
-        public int voltageTierAdvNanoSuit = 3;
+        @Config.Comment({ "Advanced NanoSuit Chestplate Voltage Tier.", "Default: 7 (HV)" })
+        @Config.RangeInt(min = 0, max = 28)
+        public int voltageTierAdvNanoSuit = 7;
 
         @Config.RequiresMcRestart
-        @Config.Comment({ "QuarkTech Suit Voltage Tier.", "Default: 5 (IV)" })
-        @Config.RangeInt(min = 0, max = 14)
+        @Config.Comment({ "QuarkTech Suit Voltage Tier.", "Default: 13 (IV)" })
+        @Config.RangeInt(min = 0, max = 28)
         @Config.SlidingOption
-        public int voltageTierQuarkTech = 5;
+        public int voltageTierQuarkTech = 13;
 
         @Config.RequiresMcRestart
-        @Config.Comment({ "Advanced QuarkTech Suit Chestplate Voltage Tier.", "Default: 5 (LuV)" })
-        @Config.RangeInt(min = 0, max = 14)
-        public int voltageTierAdvQuarkTech = 6;
+        @Config.Comment({ "Advanced QuarkTech Suit Chestplate Voltage Tier.", "Default: 16 (LuV)" })
+        @Config.RangeInt(min = 0, max = 28)
+        public int voltageTierAdvQuarkTech = 16;
 
         @Config.RequiresMcRestart
-        @Config.Comment({ "Electric Impeller Jetpack Voltage Tier.", "Default: 2 (MV)" })
-        @Config.RangeInt(min = 0, max = 14)
-        public int voltageTierImpeller = 2;
+        @Config.Comment({ "Electric Impeller Jetpack Voltage Tier.", "Default: 5 (MV)" })
+        @Config.RangeInt(min = 0, max = 28)
+        public int voltageTierImpeller = 5;
 
         @Config.RequiresMcRestart
-        @Config.Comment({ "Advanced Electric Jetpack Voltage Tier.", "Default: 3 (HV)" })
-        @Config.RangeInt(min = 0, max = 14)
-        public int voltageTierAdvImpeller = 3;
+        @Config.Comment({ "Advanced Electric Jetpack Voltage Tier.", "Default: 7 (HV)" })
+        @Config.RangeInt(min = 0, max = 28)
+        public int voltageTierAdvImpeller = 7;
 
         @Config.Comment({ "Random chance for electric tools to take actual damage", "Default: 10%" })
         @Config.RangeInt(min = 0, max = 100)
